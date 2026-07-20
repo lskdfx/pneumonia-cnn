@@ -2,3 +2,4 @@ torch
 torchvision
 pydicom
 numpy
+scikit-learn

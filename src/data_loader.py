@@ -2,9 +2,25 @@ import torch
 from torchvision.transforms import v2
 import pydicom
 import numpy as np
-from torch.utils.data import Dataset
+from torch.utils.data import DataLoader, Dataset, random_split
 import os
 import json
+
+
+def get_dataloaders(
+    uids, data_path, targets, uid_to_path_parts, batch_size, val_ratio=0.2
+):
+    dataset = PneumoniaDataset(uids, data_path, targets, uid_to_path_parts)
+
+    validation_size = int(len(dataset) * val_ratio)
+    training_size = len(dataset) - validation_size
+    train_set, validation_set = random_split(dataset, [training_size, validation_size])
+
+    training_dataloader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    validation_dataloader = DataLoader(
+        validation_set, batch_size=batch_size, shuffle=False
+    )
+    return training_dataloader, validation_dataloader
 
 
 class PneumoniaDataset(Dataset):

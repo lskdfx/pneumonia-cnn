@@ -1,5 +1,7 @@
-# RSNA Pneumonia Dataset
-CNN made from the dataset used in the 2018 RSNA Pneumonia Detection Challenge
+# Overview
+
+I made this CNN to learn more about the use of CNNs in machine learning. I chose the 2018 RSNA Dataset because it provided a reliable dataset for this project.
+
 # Batch Size Test
 
 | Epoch | Batch Size 4 | Batch Size 8 | Batch Size 16 | Batch Size 32 | Batch Size 64 |
@@ -15,10 +17,124 @@ CNN made from the dataset used in the 2018 RSNA Pneumonia Detection Challenge
 | **9** | 0.4726 | 0.4612 | 0.4612 | 0.4802 | 0.4773 |
 | **10** | 0.4467 | 0.4453 | 0.4314 | 0.4828 | 0.4740 |
 
-This was the output from running the CNN over the following batch sizes: 4, 8, 16, 32, 64. From this,
-I found that a batch size of 16 is the best for performance of the model, though that may be untrue due to the
-small number of epochs I was able to run, since I am running it on a laptop.
+This was the output from running the CNN over the following batch sizes: 4, 8, 16, 32, 64. From this, I found that a batch size of 16 is the best for performance of the model, though that may be untrue due to the small number of epochs I was able to run, since I am running it on a laptop.
 
-# Why?
-I made this CNN to learn more about machine learning, and CNN's specifically. I used RSNA's dataset since it 
-was made specifically for a challenge, so I could trust that it would be a good base to work off of.
+# Actual Metrics Test
+
+After running tests only on batch size, I found out about metrics, and ran a test with metrics (results below) to determine which was truly the best batch size. Based on the fact that the model is meant for detecting pneumonia, **recall** is the most important metric, and the batch size which achieves it is 32. Due to this, we'll be using batch size 32.
+
+## Batch Size: 4
+
+| Epoch | Loss | Accuracy | Precision | Recall | F1-Score | AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0.5869 | 0.6500 | 0.0000 | 0.0000 | 0.0000 | 0.8264 |
+| **2** | 0.5477 | 0.6700 | 1.0000 | 0.0571 | 0.1081 | 0.7749 |
+| **3** | 0.5454 | 0.6500 | 0.0000 | 0.0000 | 0.0000 | 0.8127 |
+| **4** | 0.4994 | 0.7000 | 1.0000 | 0.1429 | 0.2500 | 0.8040 |
+| **5** | 0.4865 | 0.7200 | 1.0000 | 0.2000 | 0.3333 | 0.8141 |
+| **6** | 0.4892 | 0.6800 | 0.6364 | 0.2000 | 0.3043 | 0.8009 |
+| **7** | 0.4734 | 0.6600 | 1.0000 | 0.0286 | 0.0556 | 0.7965 |
+| **8** | 0.4731 | 0.7600 | 0.7895 | 0.4286 | 0.5556 | 0.8198 |
+| **9** | 0.4510 | 0.7400 | 0.8462 | 0.3143 | 0.4583 | 0.8321 |
+| **10** | 0.4545 | 0.6700 | 1.0000 | 0.0571 | 0.1081 | 0.8448 |
+
+## Batch Size: 8
+
+| Epoch | Loss | Accuracy | Precision | Recall | F1-Score | AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0.6058 | 0.7500 | 0.0000 | 0.0000 | 0.0000 | 0.7941 |
+| **2** | 0.5554 | 0.7500 | 0.5000 | 0.0400 | 0.0741 | 0.7899 |
+| **3** | 0.5506 | 0.7600 | 0.5217 | 0.4800 | 0.5000 | 0.7995 |
+| **4** | 0.5240 | 0.7600 | 0.5385 | 0.2800 | 0.3684 | 0.7920 |
+| **5** | 0.5037 | 0.7300 | 0.4688 | 0.6000 | 0.5263 | 0.7829 |
+| **6** | 0.4890 | 0.7500 | 0.5000 | 0.5600 | 0.5283 | 0.7936 |
+| **7** | 0.4913 | 0.7600 | 0.5172 | 0.6000 | 0.5556 | 0.7979 |
+| **8** | 0.4927 | 0.7600 | 0.5172 | 0.6000 | 0.5556 | 0.7984 |
+| **9** | 0.4852 | 0.7700 | 0.5357 | 0.6000 | 0.5660 | 0.8021 |
+| **10** | 0.4713 | 0.7700 | 0.5357 | 0.6000 | 0.5660 | 0.8080 |
+
+## Batch Size: 16
+
+| Epoch | Loss | Accuracy | Precision | Recall | F1-Score | AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0.6207 | 0.6200 | 0.0000 | 0.0000 | 0.0000 | 0.6184 |
+| **2** | 0.5647 | 0.6200 | 0.0000 | 0.0000 | 0.0000 | 0.6940 |
+| **3** | 0.5363 | 0.6200 | 0.0000 | 0.0000 | 0.0000 | 0.7156 |
+| **4** | 0.5141 | 0.6200 | 0.0000 | 0.0000 | 0.0000 | 0.7271 |
+| **5** | 0.5225 | 0.6300 | 1.0000 | 0.0263 | 0.0513 | 0.7037 |
+| **6** | 0.4916 | 0.6600 | 0.6429 | 0.2368 | 0.3462 | 0.7169 |
+| **7** | 0.4726 | 0.6700 | 0.6923 | 0.2368 | 0.3529 | 0.7322 |
+| **8** | 0.4583 | 0.6700 | 0.6316 | 0.3158 | 0.4211 | 0.7233 |
+| **9** | 0.4535 | 0.6500 | 0.6000 | 0.2368 | 0.3396 | 0.7390 |
+| **10** | 0.4456 | 0.6500 | 0.7143 | 0.1316 | 0.2222 | 0.7377 |
+
+## Batch Size: 32
+
+| Epoch | Loss | Accuracy | Precision | Recall | F1-Score | AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0.6539 | 0.7500 | 0.0000 | 0.0000 | 0.0000 | 0.6000 |
+| **2** | 0.5776 | 0.7500 | 0.0000 | 0.0000 | 0.0000 | 0.6832 |
+| **3** | 0.5630 | 0.7500 | 0.0000 | 0.0000 | 0.0000 | 0.7205 |
+| **4** | 0.5300 | 0.7600 | 0.6667 | 0.0800 | 0.1429 | 0.7307 |
+| **5** | 0.5195 | 0.7500 | 0.0000 | 0.0000 | 0.0000 | 0.7285 |
+| **6** | 0.5410 | 0.7700 | 0.7500 | 0.1200 | 0.2069 | 0.7339 |
+| **7** | 0.4968 | 0.7400 | 0.4815 | 0.5200 | 0.5000 | 0.7509 |
+| **8** | 0.5020 | 0.7400 | 0.4815 | 0.5200 | 0.5000 | 0.7525 |
+| **9** | 0.4737 | 0.7800 | 0.6667 | 0.2400 | 0.3529 | 0.7419 |
+| **10** | 0.4849 | 0.7800 | 0.5517 | 0.6400 | 0.5926 | 0.7541 |
+
+## Batch Size: 64
+
+| Epoch | Loss | Accuracy | Precision | Recall | F1-Score | AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0.6253 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7240 |
+| **2** | 0.6115 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7230 |
+| **3** | 0.5733 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7839 |
+| **4** | 0.5857 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7910 |
+| **5** | 0.5478 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7905 |
+| **6** | 0.5491 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7829 |
+| **7** | 0.5200 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.7996 |
+| **8** | 0.5357 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.8072 |
+| **9** | 0.5179 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.8148 |
+| **10** | 0.5091 | 0.7300 | 0.0000 | 0.0000 | 0.0000 | 0.8153 |
+
+# Improvements based on pos_weight
+
+Because the model learned that guessing negative gave it a correct answer ~70% of the time, I had to find the pos_weight to punish a wrong guess on a positive case. I used the following code to find it:
+
+```python
+num_negatives = 0
+num_positives = 0
+for _, labels in training_dataloader:
+    num_negatives += torch.sum(labels == 0).item()
+    num_positives += torch.sum(labels == 1).item()
+pos_weight = num_negatives / num_positives
+print(f"Negatives: {num_negatives}, Positives: {num_positives}")
+print(f"pos_weight: {pos_weight}")
+
+```
+
+Results:
+
+```
+Negatives: 15973, Positives: 7960
+pos_weight: 2.0066582914572866
+
+```
+
+I then ran the model again, but integrated pos_weight into it. Here's the result:
+
+| Epoch | Loss | Accuracy | Precision | Recall | F1-Score | AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0.9182 | 0.7800 | 0.0000 | 0.0000 | 0.0000 | 0.6492 |
+| **2** | 0.8826 | 0.7800 | 0.0000 | 0.0000 | 0.0000 | 0.6725 |
+| **3** | 0.8769 | 0.7800 | 0.0000 | 0.0000 | 0.0000 | 0.6993 |
+| **4** | 0.8396 | 0.8000 | 0.6667 | 0.1818 | 0.2857 | 0.6993 |
+| **5** | 0.7809 | 0.7400 | 0.3889 | 0.3182 | 0.3500 | 0.7197 |
+| **6** | 0.7584 | 0.4800 | 0.2917 | 0.9545 | 0.4468 | 0.7010 |
+| **7** | 0.7583 | 0.7300 | 0.3913 | 0.4091 | 0.4000 | 0.7325 |
+| **8** | 0.7269 | 0.7200 | 0.4211 | 0.7273 | 0.5333 | 0.7080 |
+| **9** | 0.7231 | 0.6100 | 0.3191 | 0.6818 | 0.4348 | 0.7075 |
+| **10** | 0.6992 | 0.7300 | 0.3913 | 0.4091 | 0.4000 | 0.7150 |
+
+Through implementing pos_weight, the model moved from a peak recall of 0.6400 to a peak of 0.9545, though finer tuning may be required, as recall took a nosedive after to 0.4091 by Epoch 10.
